@@ -8,10 +8,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'sonner'
 import auth from "../assets/auth.jpg"
-
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading, setUser } from "../redux/authSlice";
+import { Loader2 } from 'lucide-react'
 const Signup = () => {
-
+  const {loading}=useSelector(store=>store.auth)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [user, setUser] = useState({
         firstName: "",
         lastName: "",
@@ -31,8 +34,8 @@ const Signup = () => {
         e.preventDefault();
         console.log(user)
 
-        try {
-            const response = await axios.post(`https://mern-blog-ha28.onrender.com/api/v1/user/register`, user, {
+        try { dispatch(setLoading(true))
+            const response = await axios.post(`http://localhost:8000/api/v1/user/register`, user, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -49,7 +52,10 @@ const Signup = () => {
             toast.error(error.response.data.message)
 
 
-        }
+        }  finally{
+              dispatch(setLoading(false))
+            }
+
 
         // try {
         //     dispatch(setLoading(true))
@@ -144,7 +150,15 @@ const Signup = () => {
                                 </button>
                             </div>
 
-                            <Button type="submit" className="w-full">Sign Up</Button>
+                            <Button type="submit" className="w-full">
+                                {
+                                                loading?(
+                                                  <>
+                                                  <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                                                  please wait
+                                                  </>
+                                                ):("Signup")}
+                               </Button>
                             <p className='text-center text-gray-600 dark:text-gray-300'>Already have an account? <Link to={'/login'}><span className='underline cursor-pointer hover:text-gray-800 dark:hover:text-gray-100'>Sign in</span></Link></p>
                         </form>
                     </CardContent>

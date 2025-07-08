@@ -62,67 +62,47 @@ export const register = async (req, res) => {
     }
 };
 
-export const login = async (req, res) => {
+export const login = async(req, res) => {
     try {
-        const { email, password } = req.body;
-
-        // Validate input
-        if (!email || !password) {
+        const {email,  password } = req.body;
+        if (!email && !password) {
             return res.status(400).json({
                 success: false,
-                message: "Email and password are required",
-            });
-        }
-
-        // Find user
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(400).json({
-                success: false,
-                message: "Incorrect email or password",
-            });
-        }
-
-        // Check password
-        if (!user.password) {
-            return res.status(400).json({
-                success: false,
-                message: "Password not set for user",
-            });
-        }
-
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid) {
-            return res.status(400).json({
-                success: false,
-                message: "Incorrect email or password",
-            });
-        }
-
-        // Generate JWT
-        const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: "1d" });
-
-        // Set cookie and send response
-        return res
-            .status(200)
-            .cookie("token", token, {
-                maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
-                httpOnly: true, // Fixed typo: httpsOnly -> httpOnly
-                sameSite: "strict",
+                message: "All fields are required"
             })
-            .json({
-                success: true,
-                message: `Welcome back ${user.firstName}`, // Fixed typo: Uuer -> user
-                user: { firstName: user.firstName, lastName: user.lastName, email: user.email },
-            });
+        }
+
+        let user = await User.findOne({email});
+        if(!user){
+            return res.status(400).json({
+                success:false,
+                message:"Incorrect email or password"
+            })
+        }
+       
+        const isPasswordValid = await bcrypt.compare(password, user.password)
+        if (!isPasswordValid) {
+            return res.status(400).json({ 
+                success: false, 
+                message: "Invalid Credentials" 
+            })
+        }
+        
+        const token = await jwt.sign({userId:user._id}, process.env.SECRET_KEY, { expiresIn: '1d' })
+        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpsOnly: true, sameSite: "strict" }).json({
+            success:true,
+            message:`Welcome back ${user.firstName}`,
+            user
+        })
     } catch (error) {
-        console.error("Login Error:", error);
+        console.log(error);
         return res.status(500).json({
             success: false,
-            message: "Failed to login",
-        });
+            message: "Failed to Login",           
+        })
     }
-};
+  
+}
 
 export const logout = async (_, res) => {
     try {
