@@ -123,46 +123,46 @@ function Navbar() {
 
 
 
-                            <DropdownMenu className="">
-                                <DropdownMenuTrigger asChild>
-                                    <Avatar className="cursor-pointer">
-                                        <AvatarImage src={logo} />
-                                        <AvatarFallback>CN</AvatarFallback>
-                                    </Avatar>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className="w-56 dark:bg-gray-800">
-                                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuGroup>
-                                        <DropdownMenuItem onClick={() => navigate('/')}>
-                                            <User />
-                                            <span>Profile</span>
-                                            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                           <DropdownMenu className="">
+                                    <DropdownMenuTrigger asChild>
+                                        <Avatar className="cursor-pointer">
+                                            <AvatarImage src={user.photoUrl || userLogo} />
+                                            <AvatarFallback>CN</AvatarFallback>
+                                        </Avatar>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent className="w-56 dark:bg-gray-800">
+                                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuGroup>
+                                            <DropdownMenuItem onClick={() => navigate('/dashboard/profile')}>
+                                                <User />
+                                                <span>Profile</span>
+                                                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => navigate('/dashboard/your-blog')}>
+                                                <ChartColumnBig />
+                                                <span>Your Blog</span>
+                                                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => navigate('/dashboard/comments')}>
+                                                <LiaCommentSolid />
+                                                <span>Comments</span>
+                                                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => navigate('/dashboard/write-blog')}>
+                                                <FaRegEdit />
+                                                <span>Write Blog</span>
+                                                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                        </DropdownMenuGroup>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem onClick={logoutHandler}>
+                                            <LogOut />
+                                            <span>Log out</span>
+                                            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                                         </DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => navigate('/')}>
-                                            <ChartColumnBig />
-                                            <span>Your Blog</span>
-                                            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => navigate('/')}>
-                                            <LiaCommentSolid />
-                                            <span>Comments</span>
-                                            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => navigate('/')}>
-                                            <FaRegEdit />
-                                            <span>Write Blog</span>
-                                            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                                        </DropdownMenuItem>
-                                    </DropdownMenuGroup>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuItem onClick={logoutHandler}>
-                                        <LogOut />
-                                        <span>Log out</span>
-                                        <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-                                    </DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
                             <Button onClick={logoutHandler}>Logout</Button>
 
                         </div> : <div className='ml-7 md:flex gap-2 '>

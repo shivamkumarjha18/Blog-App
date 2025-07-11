@@ -17,11 +17,11 @@ const Sidebar = () => {
           <SquareUser />
           <span>Profile</span>
         </NavLink>
-        <NavLink to='/dashboard' className={({ isActive }) => `text-2xl  ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
+        <NavLink to='/dashboard/your-blog' className={({ isActive }) => `text-2xl  ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
           <ChartColumnBig />
           <span>Your Blogs</span>
         </NavLink>
-        <NavLink to='/dashboard' className={({ isActive }) => `text-2xl  ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
+        <NavLink to='/dashboard/comments' className={({ isActive }) => `text-2xl  ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
           <LiaCommentSolid />
           <span>Comments</span>
         </NavLink>
@@ -34,5 +34,4 @@ const Sidebar = () => {
     </div>
   )
 }
-
 export default Sidebar

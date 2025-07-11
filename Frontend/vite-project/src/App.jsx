@@ -10,6 +10,9 @@ import Dashboard from './pages/Dashboard'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Hero from './components/Hero'
 import Profile from './pages/Profile'
+import Comments from './pages/Comments'
+import YourBlog from './pages/YourBlog'
+import CreateBlogs from './pages/CreateBlogs'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +44,16 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element:<Profile/>
+      },
+           {
+        path: "your-blog",
+        element:<YourBlog/>
+      },
+      {
+        path: "comments",
+        element:<Comments/>
+      },   {
+        
       },
       
       
