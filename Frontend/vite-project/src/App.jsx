@@ -13,6 +13,9 @@ import Profile from './pages/Profile'
 import Comments from './pages/Comments'
 import YourBlog from './pages/YourBlog'
 import CreateBlogs from './pages/CreateBlogs'
+import UpdateBlog from './pages/UpdateBlog'
+import BlogView from './pages/BlogView'
+import ProtectedRoute from './components/ProtectedRoute'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/blogs",
     element: <><Navbar/><Blogs /><Footer/></>
+  },
+   {
+    path: "/blogs/:blogId",
+    element: <><Navbar/><ProtectedRoute><BlogView /></ProtectedRoute></>
   },
   {
     path: "/about",
@@ -53,7 +60,11 @@ const router = createBrowserRouter([
         path: "comments",
         element:<Comments/>
       },   {
-        
+          path: "write-blog",
+    element: <><Navbar/><CreateBlogs /></>
+      }, {
+        path: "write-blog/:blogId",
+        element: <><UpdateBlog /></>
       },
       
       

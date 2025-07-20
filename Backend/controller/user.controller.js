@@ -117,45 +117,51 @@ export const logout = async (_, res) => {
 }
 export const updateProfile = async(req, res) => {
     try {
-        const userId= req.id
-        const {firstName, lastName, occupation, bio, instagram, facebook, linkedin, github} = req.body;
+        const userId = req.id;
+        const {
+            firstName, lastName, occupation,
+            bio, instagram, facebook, linkedin, github
+        } = req.body;
+
         const file = req.file;
+        const user = await User.findById(userId).select("-password");
 
-        const fileUri = getDataUri(file)
-        let cloudResponse = await cloudinary.uploader.upload(fileUri)
-
-        const user = await User.findById(userId).select("-password")
-        
-        if(!user){
+        if (!user) {
             return res.status(404).json({
-                message:"User not found",
-                success:false
-            })
+                message: "User not found",
+                success: false
+            });
         }
 
-        // updating data
-        if(firstName) user.firstName = firstName
-        if(lastName) user.lastName = lastName
-        if(occupation) user.occupation = occupation
-        if(instagram) user.instagram = instagram
-        if(facebook) user.facebook = facebook
-        if(linkedin) user.linkedin = linkedin
-        if(github) user.github = github
-        if(bio) user.bio = bio
-        if(file) user.photoUrl = cloudResponse.secure_url
+        if (file) {
+            const fileUri = getDataUri(file);
+            const cloudResponse = await cloudinary.uploader.upload(fileUri);
+            user.photoUrl = cloudResponse.secure_url;
+        }
 
-        await user.save()
+        // Update other fields
+        if (firstName) user.firstName = firstName;
+        if (lastName) user.lastName = lastName;
+        if (occupation) user.occupation = occupation;
+        if (instagram) user.instagram = instagram;
+        if (facebook) user.facebook = facebook;
+        if (linkedin) user.linkedin = linkedin;
+        if (github) user.github = github;
+        if (bio) user.bio = bio;
+
+        await user.save();
+
         return res.status(200).json({
-            message:"profile updated successfully",
-            success:true,
+            message: "Profile updated successfully",
+            success: true,
             user
-        })
-        
+        });
+
     } catch (error) {
-        console.log(error);
+        console.log("Update Error:", error.message);
         return res.status(500).json({
             success: false,
             message: "Failed to update profile"
-        })
+        });
     }
 }

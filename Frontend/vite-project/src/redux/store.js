@@ -1,5 +1,6 @@
 import authSlice from "./authslice.js";
 import themeSlice from "./themeSlice.js";
+import blogReducer from "./blogSlice";
 import { configureStore,combineReducers,} from "@reduxjs/toolkit";
 import {
   persistReducer,
@@ -21,7 +22,7 @@ const persistConfig = {
   }
     const rootReducer = combineReducers({
     auth:authSlice,
-
+blog: blogReducer,
     theme: themeSlice,
   })
 

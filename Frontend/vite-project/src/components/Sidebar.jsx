@@ -25,7 +25,7 @@ const Sidebar = () => {
           <LiaCommentSolid />
           <span>Comments</span>
         </NavLink>
-        <NavLink to='/dashboard' className={({ isActive }) => `text-2xl  ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
+        <NavLink to='/dashboard/write-blog' className={({ isActive }) => `text-2xl  ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
           <FaRegEdit/>
           <span>Create Blog</span>
         </NavLink>
