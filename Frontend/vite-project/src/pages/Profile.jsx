@@ -21,7 +21,7 @@ import axios from 'axios'
 import { Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { setUser } from '@/redux/authSlice'
-
+import TotalProperty from '@/components/TotalProperty'
 
 const Profile = () => {
     const dispatch = useDispatch()
@@ -153,7 +153,7 @@ const Profile = () => {
                                                 placeholder="Last Name"
                                                 className="col-span-3 text-gray-500"
                                             />
-                                        </div> 
+                                        </div>
                                     </div>
 
                                     <div className='flex gap-2'>
@@ -240,7 +240,7 @@ const Profile = () => {
                     </div>
                 </Card>
             </div>
-            
+            <TotalProperty/>
         </div>
     )
 }

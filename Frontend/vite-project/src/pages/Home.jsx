@@ -1,10 +1,15 @@
+import Hero from '@/components/Hero'
 import React from 'react'
-import { Button } from "@/components/ui/button";
-
-function Home() {
+import RecentBlog from '@/components/RecentBlog'
+import PopularAuthors from '@/components/PopularAuthors'
+import Footer from '@/components/Footer'
+const Home = () => {
   return (
-    <div>Home
-        <Button>Click me</Button>
+    <div className='pt-20'>
+      <Hero/>
+      <RecentBlog/>
+  <PopularAuthors/>
+  <Footer></Footer>
     </div>
   )
 }

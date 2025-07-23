@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./database/db.js";
 import userRoute from "./routes/user.routes.js";
 import blogRoute from "./routes/blog.routes.js"
+import commentRoute from "./routes/comment.routes.js"
 import cors from "cors";
 import cookieParser from "cookie-parser";
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(cookieParser())
 // ✅ Routes ko CORS ke baad define karo
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/blog", blogRoute);
+ app.use("/api/v1/comment", commentRoute)
 app.listen(PORT, () => {
   connectDB();
   console.log(`SERVER LISTEN AT PORT ${PORT}`);

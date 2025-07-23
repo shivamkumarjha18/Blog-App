@@ -1,7 +1,21 @@
-import authSlice from "./authslice.js";
-import themeSlice from "./themeSlice.js";
-import blogReducer from "./blogSlice";
-import { configureStore,combineReducers,} from "@reduxjs/toolkit";
+// import { configureStore } from '@reduxjs/toolkit'
+// import authSlice from "./authSlice"
+
+// const store = configureStore({
+//   reducer: {
+//    auth:authSlice
+//   },
+// })
+
+// export default store
+
+
+import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import authSlice from "./authSlice";
+import blogSlice from "./blogSlice";
+import themeSlice from "./themeSlice"
+import commentSlice from "./commentSlice"
+
 import {
   persistReducer,
   FLUSH,
@@ -20,13 +34,13 @@ const persistConfig = {
     version: 1,
     storage,
   }
-    const rootReducer = combineReducers({
+  const rootReducer = combineReducers({
     auth:authSlice,
-blog: blogReducer,
+    blog:blogSlice,
+    comment:commentSlice,
     theme: themeSlice,
   })
-
- const persistedReducer = persistReducer(persistConfig, rootReducer)
+  const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 
 const store = configureStore({
@@ -38,4 +52,4 @@ const store = configureStore({
         },
       }),
 });
-export default store
+export default store;

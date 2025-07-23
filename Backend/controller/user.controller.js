@@ -165,3 +165,20 @@ export const updateProfile = async(req, res) => {
         });
     }
 }
+export const getAllUsers = async (req, res) => {
+    try {
+      const users = await User.find().select('-password'); // exclude password field
+      res.status(200).json({
+        success: true,
+        message: "User list fetched successfully",
+        total: users.length,
+        users
+      });
+    } catch (error) {
+      console.error("Error fetching user list:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to fetch users"
+      });
+    }
+  };
