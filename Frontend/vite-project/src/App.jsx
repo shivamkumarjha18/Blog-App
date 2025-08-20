@@ -16,7 +16,10 @@ import Comments from './pages/Comments'
 import UpdateBlog from './pages/UpdateBlog'
 import ProtectedRoute from './components/ProtectedRoute'
 import SearchList from './pages/SearchList'
-
+import Adminlayout from './components/layouts/Adminlayout'
+import Adminusers from './pages/Adminusers'
+import Adminblogs from './pages/Adminblogs'
+import Adminupdate from './pages/Adminupdate'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -82,6 +85,24 @@ const router = createBrowserRouter([
       
       
     ]
+   },
+   {
+     path:"/admin",
+     element:<><Navbar/><ProtectedRoute><Adminlayout/></ProtectedRoute></>,
+     children: [
+       {
+         path: "users",
+         element: <> <Adminusers/> </>
+       },
+       {
+        path: "blogs",
+        element: <> <Adminblogs/> </>
+       },
+       {
+        path:"users/:id/edit",
+        element: <><Adminupdate/></>
+       }
+     ]
    },
   {
     path: "/signup",

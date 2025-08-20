@@ -65,7 +65,7 @@ export const getOwnBlogs = async (req, res) => {
             return res.status(400).json({ message: "User ID is required." });
         }
 
-  const blogs = await Blog.find({ author: userId, thumbnail: { $exists: true } }).populate({
+  const blogs = await Blog.find({ author: userId }).populate({
   path: 'author',
   select: 'firstName lastName photoUrl'
 });

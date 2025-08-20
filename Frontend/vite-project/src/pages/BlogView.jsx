@@ -97,15 +97,8 @@ const BlogView = () => {
                 <div className="flex items-center justify-between mb-4">
                     <h1 className="text-3xl font-bold">{selectedBlog?.title}</h1>
                     <div className="space-x-2">
-                        <Button variant="outline" size="icon" onClick={() => navigate(`/edit/${selectedBlog._id}`)}>
-                            <Edit className="w-4 h-4" />
-                        </Button>
-                        <Button variant="outline" size="icon">
-                            <Eye className="w-4 h-4" />
-                        </Button>
-                        <Button variant="outline" size="icon" onClick={deleteBlogHandler}>
-                            <Trash2 className="w-4 h-4 text-red-500" />
-                        </Button>
+                        
+                    
                     </div>
                 </div>
                 <p className="text-muted-foreground mb-4">{selectedBlog?.description}</p>

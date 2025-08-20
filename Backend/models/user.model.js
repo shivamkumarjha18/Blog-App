@@ -45,6 +45,10 @@ const userSchema =new mongoose.Schema({
      facebook:{
           type:String,
         default:""
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
     }
 
 

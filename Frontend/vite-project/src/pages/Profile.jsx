@@ -22,7 +22,7 @@ import { Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { setUser } from '@/redux/authSlice'
 import TotalProperty from '@/components/TotalProperty'
-
+import { NavLink } from 'react-router-dom'
 const Profile = () => {
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
@@ -92,6 +92,12 @@ const Profile = () => {
     return (
         <div className='pt-20 md:ml-[320px] md:h-screen'>
             <div className='max-w-6xl mx-auto mt-8 '>
+{user?.isAdmin && (
+  <NavLink to="/admin" className="cursor-pointer text-4xl text-red-500">
+    <li>ADMIN Panel</li>
+  </NavLink>
+)}
+
                 <Card className=" flex md:flex-row flex-col gap-10 p-6 md:p-10 dark:bg-gray-800 mx-4 md:mx-0">
                     {/* image section */}
                     <div className='flex flex-col items-center justify-center md:w-[400px]'>

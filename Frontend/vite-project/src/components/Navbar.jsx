@@ -87,7 +87,7 @@ function Navbar() {
                     <Link to={'/'}>
                         <div className='flex gap-2 items-center'>
                             <img src={logo} alt="" className='w-7 h-7 md:w-10 md:h-10 dark:invert' />
-                            <h1 className='font-bold text-3xl md:text-4xl'>Logo</h1>
+                            <h1 className='font-bold text-3xl md:text-4xl'>Blogify</h1>
                         </div>
                     </Link>
                     <div className='relative hidden md:block'>
@@ -107,6 +107,7 @@ function Navbar() {
                         <NavLink to={'/'} className="cursor-pointer"><li>Home</li></NavLink>
                         <NavLink to={'/blogs'} className={`cursor-pointer`}><li>Blogs</li></NavLink>
                         <NavLink to={'/about'} className={`cursor-pointer`}><li>About</li></NavLink>
+                       
                         {/* <NavLink to={'/write-blog'} className={`cursor-pointer`}><li>Write a Blog</li></NavLink> */}
                     </ul>
 
