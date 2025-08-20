@@ -24,7 +24,7 @@ app.use("/api/v1/admin",adminRoute)
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/blog", blogRoute);
  app.use("/api/v1/comment", commentRoute)
-app.listen(PORT, () => {
+app.listen(PORT, () => {   console.log(process.env.MONGODB_URL)
   connectDB();
   console.log(`SERVER LISTEN AT PORT ${PORT}`);
 });

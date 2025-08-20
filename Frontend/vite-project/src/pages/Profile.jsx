@@ -82,11 +82,9 @@ const Profile = () => {
             }
         } catch (error) {
             console.log(error);
-
         } finally {
             setLoading(false)
         }
-
     }
 
     return (
@@ -160,6 +158,20 @@ const Profile = () => {
                                                 className="col-span-3 text-gray-500"
                                             />
                                         </div>
+                                    </div>
+
+                                    <div>
+                                        <Label htmlFor="occupation" className="text-right">
+                                            Occupation
+                                        </Label>
+                                        <Input
+                                            id="occupation"
+                                            name="occupation"
+                                            value={input.occupation}
+                                            onChange={changeEventHandler}
+                                            placeholder="Enter your occupation"
+                                            className="col-span-3 text-gray-500"
+                                        />
                                     </div>
 
                                     <div className='flex gap-2'>
@@ -241,7 +253,6 @@ const Profile = () => {
                                 </DialogFooter>
                             </DialogContent>
                         </Dialog>
-
 
                     </div>
                 </Card>
